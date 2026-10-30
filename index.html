@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@latest/css/ionic.bundle.css">
+
+  </head>
+
+  <body>
+    <ion-app>
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Simple Calculator</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            type="number" placeholder="enter your first number: "
+            id="firstNumber">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            type="number" placeholder="enter your second number: "
+            id="secondNumber">
+          </ion-input>
+        </ion-item>
+
+        <div class="ion-padding">
+          <ion-button expand="block" id="addButton" onclick="addNumbers()">+</ion-button>
+          <ion-button expand="block" id="subtractButton" onclick="subtractNumbers()">-</ion-button>
+          <ion-button expand="block" id="multiplyButton" onclick="multiplyNumbers()">×</ion-button>
+          <ion-button expand="block" id="divideButton" onclick="divideNumbers()">÷</ion-button>
+          <ion-button expand="block" id="clearButton" onclick="clearFields()">Clear</ion-button>
+        </div>
+
+        <div class="ion-padding">
+          <h2>Result: <span id="result"></span></h2>
+        </div>
+
+      </ion-content>
+    </ion-app>
+
+    <script>
+      function addNumbers() {
+        let firstNumber = parseFloat(document.getElementById('firstNumber').value);
+        let secondNumber = parseFloat(document.getElementById('secondNumber').value);
+        let result = firstNumber + secondNumber;
+        document.getElementById('result').textContent = result;
+      }
+
+      function subtractNumbers() {
+        let firstNumber = parseFloat(document.getElementById('firstNumber').value);
+        let secondNumber = parseFloat(document.getElementById('secondNumber').value);
+        let result = firstNumber - secondNumber;
+        document.getElementById('result').textContent = result;
+      }
+
+      function multiplyNumbers() {
+        let firstNumber = parseFloat(document.getElementById('firstNumber').value);
+        let secondNumber = parseFloat(document.getElementById('secondNumber').value);
+        let result = firstNumber * secondNumber;
+        document.getElementById('result').textContent = result;
+      }
+
+      function divideNumbers() {
+        let firstNumber = parseFloat(document.getElementById('firstNumber').value);
+        let secondNumber = parseFloat(document.getElementById('secondNumber').value);
+        if (secondNumber === 0) {
+          document.getElementById('result').textContent = "Error: Division by zero";
+        } else {
+          let result = firstNumber / secondNumber;
+          document.getElementById('result').textContent = result;
+        }
+      }
+
+      function clearFields() {
+        document.getElementById('firstNumber').value = '';
+        document.getElementById('secondNumber').value = '';
+        document.getElementById('result').textContent = '';
+      }
+    </script>
+  </body>
+</html>
